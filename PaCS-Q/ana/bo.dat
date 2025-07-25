@@ -1,0 +1,5 @@
+distance DIS1 :88,92,239,262,266 :541 out dis.dat
+
+rms RMS1 :88,92,239,262,266,541&!@H= first out rmsd1.dat mass
+
+dihedral DIH1 :541@C2 :541@C3 :541@C4 :541@C5 out dih.dat
