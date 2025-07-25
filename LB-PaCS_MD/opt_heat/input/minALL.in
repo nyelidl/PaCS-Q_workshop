@@ -1,0 +1,8 @@
+Minimization of all molecules
+ &cntrl
+ imin   = 1,
+ maxcyc = 3000,
+ ncyc   = 1500,
+ ntb    = 1,
+ cut    = 12,
+ /

@@ -1,0 +1,15 @@
+system Stage 2 continue 1000ps  (T=300 K for 1000 ps) -- Constant Pressure--
+&cntrl
+ imin=0, irest=1, ntx=5, ntpr=5000, ntwr=5000, ntwx=5000,
+
+ nstlim=5000000, dt=0.002,
+
+ tempi=300.0, temp0=300.0, ntt=3, taup=5.0, ig=-1,
+
+ gamma_ln=2.0, ntb=2, ntp=1, pres0=1.0, cut=6.0, ntr=0,
+
+ ntc=2, ntf=2,
+
+ nrespa=1, ioutfm=1, iwrap=1,
+
+&end
