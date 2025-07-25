@@ -42,6 +42,7 @@
 2. **Prepare Reference Structure**  
    Create a reference structure file.
    I. By Discovery Studio
+   
    https://github.com/user-attachments/assets/99123d9b-9e47-496e-a3af-d3a9aa0da5f2
 
 
