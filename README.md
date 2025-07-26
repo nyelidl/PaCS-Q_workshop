@@ -1,5 +1,40 @@
 # Molecular Simulation Workflow
 
+## Installation (For tap cluster)
+`wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh`
+
+`bash Miniconda3-latest-Linux-x86_64.sh`
+
+enter
+
+q
+
+yes
+
+enter
+
+no
+
+`source ./miniconda3/etc/profile.d/conda.sh`
+
+`conda create -n pacsq python=3.10`
+
+a
+
+a
+
+`conda activate pacsq`
+
+`pip install PaCS-Q`
+
+try
+
+`pacs_q -h`
+
+
+
+
+
 ## 1. Structure Preparation
 
 1. **Download PDB file**  
