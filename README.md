@@ -68,6 +68,25 @@ try
 
 10. **Run LB-PaCS MD via PaCS-Q**  
     Run LB-PaCS MD simulation using PaCS-Q.
+    submit by sbatch
+    
+      ```bash
+      #!/bin/bash
+      #SBATCH --job-name=test_job
+      #SBATCH --ntasks=1
+      #SBATCH --cpus-per-task=1
+      #SBATCH --mem=4GB
+      #SBATCH --time=01:00:00
+      #SBATCH --partition=active       
+      #SBATCH --qos=normal            
+      #SBATCH --account=workshop       
+      #SBATCH --gres=gpu:1             
+      
+      module load amber/22
+      source /data/home/training025/miniconda3/etc/profile.d/conda.sh
+      conda activate pacsq
+      pacs_q_md -cy 50 -cd 5 -s "resname MOL and name O1 O2" -s2 "resid 43 and name OG"
+      ```
 
 ## 3. QM/MM Preparation and Execution
 
