@@ -2,15 +2,17 @@
 
 ## Tutorial preparation
 
-## Prerequisites software (link)
-Chimera  
-vmd  
-amber22  
-  
+## Prerequisites software 
+[UCSF chimerax](https://www.cgl.ucsf.edu/chimerax/)  
+[VMD](https://www.ks.uiuc.edu/Research/vmd/)  
+[Amber22 or later](https://ambermd.org/AmberMD.php)  
+[]() 
+
 For Windows users:  
-Discovery studio  
-MobaXterm  
-notepad++  
+[Discovery studio](https://www.3ds.com/products/biovia/discovery-studio)   
+[MobaXterm](https://mobaxterm.mobatek.net/)   
+[notepad++](https://notepad-plus-plus.org/)   
+
 
 ### conda installation
 `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh`
