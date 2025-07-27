@@ -1,75 +1,70 @@
 # Workflow for tutorial
 
-## tutorial preparation
+## Tutorial preparation
+
+## Prerequisites software (link)
+ChimeraX
+vmd
+amber22
+
+For Windows users:
+Discovery studio
+MobaXterm
+notepad++
 
 ### conda installation
 `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh`
 
 `bash Miniconda3-latest-Linux-x86_64.sh`
 
-enter
-
-q
-
-yes
-
-enter
-
-no
-
 `source ./miniconda3/etc/profile.d/conda.sh`
 
-`conda create -n pacsq python=3.10`
+`conda create -n PaCS-Q python=3.10`
 
-a
-
-a
-
-`conda activate pacsq`
+`conda activate PaCS-Q`
 
 `pip install PaCS-Q`
 
-try
+formal information
 
 `pacs_q -h`
 
 
-
-
-
-## 1. Structure Preparation
+## 1. System Preparation
 
 1. **Download PDB file**  
-   Download the structure file with PDB ID `3DT8`.
+   Download the structure file with PDB ID `3DT8` (link).
 
 2. **Residue Mutation**  
-   Change residue 47 from SGB to SER.
+   Change residue 47 from SGB to SER. (add how to picture)
 
-3. **Run pdb2pqr**  
+3. **assigning Protonation state to protein**  
    Process the structure using pdb2pqr.
 
-4. **Residue Name Correction**  
-   Change all ASH residues to ASP.
-
-5. **Run pdb4amber**  
+4. **Run pdb4amber**  
    Standardize and sort the PDB file using pdb4amber.
 
-6. **Ligand File Preparation**  
-   Use antechamber to process the sarin pdb file and generate force field parameters.
+5. **Ligand Force Field Preparation**  
+   Use antechamber to process the sarin and generate force field parameters. (add command line)
 
-7. **Import Ligand into PDB**  
-   Merge the ligand structure into the main PDB file.
+6. **Import Ligand into PDB**  
+   Merge the ligand structure into the protein (pdb file). cat command line
 
-8. **Adjust Ligand Position**  
+7. **Adjust Ligand Position (chimeraX or discovery studio)**  
    Manually adjust the position of the ligand as needed.
 
 ## 2. System Building and MD Simulation in Amber
 
-9. **Build System with LEaP**  
-   Build the system using `tleap -f leap.in`.
+8. **Build System with LEaP**  
+   Build the system using `tleap -f leap.in`
 
-10. **Run LB-PaCS MD via PaCS-Q**  
-    Run LB-PaCS MD simulation using PaCS-Q.
+   detail of leap.in
+
+9. **Minization and Heating up the system**  
+
+
+10. **Run LB-PaCS MD via PaCS-Q**  (how to check the result, or excel)
+    Run LB-PaCS MD simulation using PaCS-Q
     submit by sbatch
     
       ```bash
