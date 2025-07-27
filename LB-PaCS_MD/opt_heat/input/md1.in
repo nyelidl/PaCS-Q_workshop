@@ -15,3 +15,9 @@ Heating up the system 60 ps Stage 1-- Constant Volume--
  iwrap=1,
 
 &end
+ /
+Hold protein fixed
+100.0
+RES 1 213
+END
+END
