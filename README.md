@@ -2,7 +2,7 @@
 
 ## Tutorial preparation
 
-## Prerequisites software 
+### Prerequisites software 
 [UCSF chimerax](https://www.cgl.ucsf.edu/chimerax/)  
 [VMD](https://www.ks.uiuc.edu/Research/vmd/)  
 [Amber22 or later](https://ambermd.org/AmberMD.php)  
@@ -14,18 +14,18 @@ For Windows users:
 [notepad++](https://notepad-plus-plus.org/)   
 
 
-### conda installation
+### conda & PaCS-Q installation
 `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh`
 
 `bash Miniconda3-latest-Linux-x86_64.sh`
 
 `source ./miniconda3/etc/profile.d/conda.sh`
 
-`conda create -n PaCS-Q python=3.10`
+`conda create -n pacsq_env python=3.10`
 
-`conda activate PaCS-Q`
+`conda activate pacsq_env`
 
-`pip install PaCS-Q`
+`pip install pacsq_env`
 
 formal information
 
