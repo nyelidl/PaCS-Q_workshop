@@ -53,19 +53,34 @@ formal information
    Do not forget to run `module load amber/22u23` first.
 
 5. **Obtain the structure of sarin**
-   [sarin](https://pubchem.ncbi.nlm.nih.gov/compound/Sarin)
-   Convert the sdf format to pdb format by [Multiwfn](http://sobereva.com/multiwfn/) or [Openbabel](https://openbabel.org/index.html).
-   The converted file can be found [here](parameterization/sarin.pdb).
+   [sarin](https://pubchem.ncbi.nlm.nih.gov/compound/Sarin)  
+   Convert the sdf format to pdb format by [Multiwfn](http://sobereva.com/multiwfn/) or [Openbabel](https://openbabel.org/index.html).  
+   The converted file can be found [here](parameterization/sarin.pdb).  
 
-7. **Import Ligand into PDB**  
-   Merge the ligand structure into the protein (pdb file).
-   `cat input_pqr.pdb sarin.pdb > input.pdb`
-
-8. **Ligand Force Field Preparation**  
-   Use antechamber to process the sarin and generate force field parameters.  
-   leap.in:  
-   
+6. **Import Ligand into PDB**  
+   Merge the ligand structure into the protein (pdb file).  
    ```bash
+   cat input_pqr.pdb sarin.pdb > input.pdb
+   ```  
+
+7. **Ligand Force Field Preparation**  
+   Use antechamber to process the sarin and generate force field parameters.
+    ```bash
+    antechamber -i sarin.pdb -fi pdb -o MOL.mol2 -fo mol2 -c bcc -nc 0 -rn MOL -pf y                                          
+    ```
+    For your future research, I recommend using Gaussian16 or Gaussian25 (at the end of this year) to fit RESP charges.
+   
+8. **Adjust Ligand Position (chimeraX or discovery studio)**  
+   Manually adjust the position of the ligand as needed.
+
+
+## 2. System Building and MD Simulation in Amber
+
+1. **Build System with LEaP**  
+   Build the system using `tleap -f leap.in`
+    
+    [leap.in](parameterization/leap/leap.in):  
+    ```bash
     source leaprc.protein.ff14SB
     source leaprc.gaff2
     source leaprc.water.tip3p
@@ -78,24 +93,40 @@ formal information
     addIons p Na+ 0
     saveamberparm p complex.top complex.crd
     quit
-   ```
-   `tleap -f leap.in`
+    ```
+    `tleap -f leap.in`
+
+2. **Minization and Heating up the system**
+   make a run script (example: sub.sh):  
    
+   ```bash
+    #!/bin/bash
+    #SBATCH --job-name=test_job
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=1
+    #SBATCH --mem=4GB
+    #SBATCH --time=01:00:00
+    #SBATCH --partition=active       
+    #SBATCH --qos=normal            
+    #SBATCH --account=workshop       
+    #SBATCH --gres=gpu:1             
+    
+    module load amber/22
+    
+    inp=complex
+    
+    #minimization
+    pmemd.cuda -O -i ./input/minWAT.in -o minWAT.out -p $inp.top -c $inp.crd -r minWAT.crd -ref $inp.crd
+    
+    pmemd.cuda -O -i ./input/minALL.in -o minALL.out -p $inp.top -c minWAT.crd -r minALL.crd -ref minWAT.crd
+    
+    #Heating up
+    pmemd.cuda  -O -i ./input/md1.in -o md1.out -p $inp.top -c minALL.crd -ref minALL.crd -r md1.restrt -x md1.nc -v mdvel
+   ```
+   `sbatch sub.sh`  
 
-10. **Adjust Ligand Position (chimeraX or discovery studio)**  
-   Manually adjust the position of the ligand as needed.
 
-## 2. System Building and MD Simulation in Amber
-
-8. **Build System with LEaP**  
-   Build the system using `tleap -f leap.in`
-
-   detail of leap.in
-
-9. **Minization and Heating up the system**  
-
-
-10. **Run LB-PaCS MD via PaCS-Q**  (how to check the result, or excel)
+4. **Run LB-PaCS MD via PaCS-Q**  (how to check the result, or excel)
     Run LB-PaCS MD simulation using PaCS-Q
     submit by sbatch
     
