@@ -96,7 +96,7 @@ formal information
     ```
     `tleap -f leap.in`
 
-2. **Minization and Heating up the system**
+2. **Minization and Heating up the system**  
    make a run script (example: sub.sh):  
    
    ```bash
@@ -126,7 +126,7 @@ formal information
    `sbatch sub.sh`  
 
 
-4. **Run LB-PaCS MD via PaCS-Q**  (how to check the result, or excel)
+3. **Run LB-PaCS MD via PaCS-Q**  
     Run LB-PaCS MD simulation using PaCS-Q
     submit by sbatch
     
