@@ -3,14 +3,14 @@
 ## Tutorial preparation
 
 ## Prerequisites software (link)
-ChimeraX
-vmd
-amber22
-
-For Windows users:
-Discovery studio
-MobaXterm
-notepad++
+Chimera  
+vmd  
+amber22  
+  
+For Windows users:  
+Discovery studio  
+MobaXterm  
+notepad++  
 
 ### conda installation
 `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh`
