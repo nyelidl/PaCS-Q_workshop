@@ -39,24 +39,50 @@ formal information
 1. **Download PDB file**  
    Download the structure file with PDB ID [3TD8](https://www.rcsb.org/structure/3DT8) .
 
-2. **Residue Mutation**  
+2. **Residue Mutation**(notepad++ or vim)
    Change residue 47 from SGB to SER.
    <img width="2688" height="1601" alt="アセット 1" src="https://github.com/user-attachments/assets/6f1c1ea3-e7c3-4d5f-9967-b31d8e1d954a" />
 
 
-4. **assigning Protonation state to protein**  
-   Process the structure using pdb2pqr.
+3. **assigning Protonation state to protein**
+   Process the structure using [pdb2pqr](https://server.poissonboltzmann.org/pdb2pqr).
 
-5. **Run pdb4amber**  
-   Standardize and sort the PDB file using pdb4amber.
+4. **Run pdb4amber**  
+   Standardize and sort the PDB file using pdb4amber.  
+   `pdb4amber -i xxx.pqr -p input_pqr.pdb`  
+   Do not forget to run `module load amber/22u23` first.
 
-6. **Ligand Force Field Preparation**  
-   Use antechamber to process the sarin and generate force field parameters. (add command line)
+5. **Obtain the structure of sarin**
+   [sarin](https://pubchem.ncbi.nlm.nih.gov/compound/Sarin)
+   Convert the sdf format to pdb format by [Multiwfn](http://sobereva.com/multiwfn/) or [Openbabel](https://openbabel.org/index.html).
+   The converted file can be found [here](parameterization/sarin.pdb).
 
 7. **Import Ligand into PDB**  
-   Merge the ligand structure into the protein (pdb file). cat command line
+   Merge the ligand structure into the protein (pdb file).
+   `cat input_pqr.pdb sarin.pdb > input.pdb`
 
-8. **Adjust Ligand Position (chimeraX or discovery studio)**  
+8. **Ligand Force Field Preparation**  
+   Use antechamber to process the sarin and generate force field parameters.  
+   leap.in:  
+   
+   ```bash
+    source leaprc.protein.ff14SB
+    source leaprc.gaff2
+    source leaprc.water.tip3p
+    
+    MOL = loadmol2 MOL.mol2
+    
+    p = loadpdb input.pdb
+    
+    solvateBox p TIP3PBOX 14.0 iso
+    addIons p Na+ 0
+    saveamberparm p complex.top complex.crd
+    quit
+   ```
+   `tleap -f leap.in`
+   
+
+10. **Adjust Ligand Position (chimeraX or discovery studio)**  
    Manually adjust the position of the ligand as needed.
 
 ## 2. System Building and MD Simulation in Amber
