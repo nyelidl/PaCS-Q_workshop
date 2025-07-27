@@ -52,7 +52,7 @@ formal information
    `pdb4amber -i xxx.pqr -p input_pqr.pdb`  
    Do not forget to run `module load amber/22u23` first.
 
-5. **Obtain the structure of sarin**
+5. **Obtain the structure of sarin**  
    [sarin](https://pubchem.ncbi.nlm.nih.gov/compound/Sarin)  
    Convert the sdf format to pdb format by [Multiwfn](http://sobereva.com/multiwfn/) or [Openbabel](https://openbabel.org/index.html).  
    The converted file can be found [here](parameterization/sarin.pdb).  
