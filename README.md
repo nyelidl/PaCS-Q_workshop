@@ -154,12 +154,13 @@ formal information
    Export the desired structures from the LB-PaCS MD simulation.
 
 2. **Prepare Reference Structure**  
-   Create a reference structure file.
-   I. By Discovery Studio
+   Create a reference structure file.  
+   I. By Discovery Studio  
    
    https://github.com/user-attachments/assets/99123d9b-9e47-496e-a3af-d3a9aa0da5f2
 
-
+   II. By gaussview
+   
 
 4. **Prepare QM/MM Input File**  
    Prepare the QM/MM input file (e.g., `qmmm.in`).
