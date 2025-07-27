@@ -12,7 +12,9 @@ For Windows users:
 [Discovery studio](https://www.3ds.com/products/biovia/discovery-studio)   
 [MobaXterm](https://mobaxterm.mobatek.net/)   
 [notepad++](https://notepad-plus-plus.org/)   
-
+  
+For Macbook users:   
+[gaussview](https://gaussian.com/gaussview6/)   
 
 ### conda & PaCS-Q installation
 `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh`
