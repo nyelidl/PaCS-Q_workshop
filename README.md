@@ -96,7 +96,7 @@ formal information
     ```
     `tleap -f leap.in`
 
-2. **Minization and Heating up the system**  
+2. **Minimization and Heating up the system**  
    make a run script (example: sub.sh):  
    
    ```bash
