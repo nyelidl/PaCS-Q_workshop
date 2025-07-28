@@ -27,7 +27,7 @@ For Macbook users:
 
 `conda activate pacsq_env`
 
-`pip install pacsq_env`
+`pip install PaCS-Q`
 
 formal information
 
