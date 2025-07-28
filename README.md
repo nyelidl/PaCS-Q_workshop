@@ -208,4 +208,6 @@ formal information
     module load amber/22
     source /data/home/training025/miniconda3/etc/profile.d/conda.sh
     conda activate pacsq
+
+    pacs_q -cy 10000 -cd 5 -r ./ref3.pdb -s "resid 43 191 213" -qm qmmm.in
     ```
