@@ -164,7 +164,48 @@ formal information
 
 4. **Prepare QM/MM Input File**  
    Prepare the QM/MM input file (e.g., `qmmm.in`).
+    ```
+    Short QM/MM simulation
+    &cntrl
+    imin=0, nstlim=5,
+    ntx=1,
+    irest=0,
+    dt=0.001,
+    ntt=3, tempi=400.0, temp0=400.0,
+    gamma_ln=2,
+    ntb=2, ntp=1,
+    cut=6.0,
+    ntpr=1,
+    ntwx=1,
+    ntwr=100,
+    pres0=1.0,
+    barostat=1,
+    ig=-1,
+    ifqnt=1
+    /
+    &qmmm
+    qmmask=':43,191',
+    qmcharge=0,
+    qm_theory='PM6-D',
+    qmcut=6,
+    qmshake=0,
+    writepdb=1,
+    /
+    ```
 
-5. **Run PaCS-Q**  
+6. **Run PaCS-Q**  
    Execute PaCS-Q for QM/MM simulation.
-
+    ```
+    #!/bin/bash
+    #SBATCH --job-name=test_job
+    #SBATCH --ntasks=8
+    #SBATCH --mem=4GB
+    #SBATCH --time=10:00:00
+    #SBATCH --partition=active       
+    #SBATCH --qos=cpu
+    #SBATCH --account=workshop       
+    
+    module load amber/22
+    source /data/home/training025/miniconda3/etc/profile.d/conda.sh
+    conda activate pacsq
+    ```
