@@ -1,5 +1,6 @@
 # Workflow for tutorial  
-Download the slide: https://drive.google.com/file/d/1pZg8C7f66wEVTUjTLCLDnDMwKg613n0D/view?usp=sharing
+Download the slide: https://drive.google.com/file/d/1pZg8C7f66wEVTUjTLCLDnDMwKg613n0D/view?usp=sharing  
+github: https://github.com/nyelidl/PaCS-Q  
 
 ## Tutorial preparation
 
